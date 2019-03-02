@@ -46,7 +46,7 @@ def Execute(data):
                     response = response.replace("[randUser]",data.GetParam(1))
                 else:
                     newRandUser = Parent.GetRandomActiveUser()
-                    while newRandUser == data.UserName and len(Parent.GetViewerList()) != 1:
+                    while newRandUser == data.UserName and len(Parent.GetViewerList()) > 1:
                             newRandUser = Parent.GetRandomActiveUser()
                     response = response.replace("[randUser]", newRandUser)
                 
