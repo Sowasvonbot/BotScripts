@@ -31,5 +31,12 @@
       "label": "Cooldown (seconds)",
       "tooltip": "How long the command should go on cooldown for",
       "group": "Core"
+    },
+    "clientID": {
+      "type": "textbox",
+      "value" : "Your client ID",
+      "label" : "Client ID",
+      "tooltip" : "Insert your client ID",
+      "group": "Hidden"
     }
   }

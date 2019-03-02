@@ -13,6 +13,7 @@ class MySettings(object):
 			self.Cooldown = 1
 			self.Permission = "everyone"
 			self.Info = ""
+			self.clientID = ""
 
 	def Reload(self, jsondata):
 		self.__dict__ = json.loads(jsondata, encoding="utf-8")

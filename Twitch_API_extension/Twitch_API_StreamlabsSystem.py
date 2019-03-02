@@ -22,8 +22,6 @@ Version = "1.0.0.1"
 #---------------------------
 #   Define Global Variables
 #---------------------------
-global CLIENT_ID
-CLIENT_ID = "u0qw6k8svmddooisgqjbg2sxd30xpz"
 global SettingsFile
 SettingsFile = ""
 global ScriptSettings
@@ -42,7 +40,6 @@ def Init():
     #   Load settings
     SettingsFile = os.path.join(os.path.dirname(__file__), "Settings\settings.json")
     ScriptSettings = MySettings(SettingsFile)
-    ScriptSettings.Response = "Overwritten pong! ^_^"
     return
 
 #---------------------------
@@ -105,10 +102,14 @@ def IsValidChatMessage(data):
 
 # Get the follower age for given streamer
 def getFollowerAge(data, streamer="coonh"):
-    header = {"Client-ID": CLIENT_ID, "Accept":"application/vnd.twitchtv.v5+json"}
-    response = json.loads(Parent.GetRequest("https://api.twitch.tv/kraken/users?login="+ data.UserName, header))
-    response = json.loads(response["response"])
-    USerID = response["users"][0]["_id"]
+    header = {"Client-ID": ScriptSettings.clientID, "Accept":"application/vnd.twitchtv.v5+json"}
+    try:
+        response = json.loads(Parent.GetRequest("https://api.twitch.tv/kraken/users?login="+ data.UserName, header))
+        response = json.loads(response["response"])
+        USerID = response["users"][0]["_id"]
+    except:
+        Parent.Log(ScriptName, "No Request possible. Maybe no Client ID")
+        return
 
     try:
         StreamerId = json.loads(Parent.GetRequest("https://api.twitch.tv/kraken/users?login="+ streamer, header))
