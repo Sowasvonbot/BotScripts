@@ -36,7 +36,9 @@ def Init():
         os.makedirs(directory)
 
     #   Load settings
+    global SettingsFile
     SettingsFile = os.path.join(os.path.dirname(__file__), "Settings\settings.json")
+    global ScriptSettings
     ScriptSettings = MySettings(SettingsFile)
     ScriptSettings.Response = "Overwritten pong! ^_^"
     return
