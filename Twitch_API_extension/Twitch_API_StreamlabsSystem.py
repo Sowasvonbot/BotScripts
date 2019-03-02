@@ -52,7 +52,7 @@ def Execute(data):
         if data.GetParam(1) != "":
             Parent.SendStreamMessage(getFollowerAge(data, data.GetParam(1)))
         else:
-            Parent.SendStreamMessage(getFollowerAge(data))
+            Parent.SendStreamMessage(getFollowerAge(data, Parent.GetChannelName()))
     return
 
     
@@ -103,7 +103,7 @@ def IsValidChatMessage(data):
 
 
 # Get the follower age for given streamer
-def getFollowerAge(data, streamer="coonh"):
+def getFollowerAge(data, streamer):
     header = {"Client-ID": ScriptSettings.clientID, "Accept":"application/vnd.twitchtv.v5+json"}
     try:
         response = json.loads(Parent.GetRequest("https://api.twitch.tv/kraken/users?login="+ data.UserName, header))
