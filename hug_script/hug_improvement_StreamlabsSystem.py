@@ -45,7 +45,10 @@ def Execute(data):
                 if CheckForUser(data.GetParam(1)):
                     response = response.replace("[randUser]",data.GetParam(1))
                 else:
-                    response = response.replace("[randUser]", Parent.GetRandomActiveUser())
+                    newRandUser = Parent.GetRandomActiveUser()
+                    while newRandUser == data.UserName and len(Parent.GetViewerList()) != 1:
+                            newRandUser = Parent.GetRandomActiveUser()
+                    response = response.replace("[randUser]", newRandUser)
                 
                 Parent.AddUserCooldown(ScriptName, ScriptSettings.Command, data.User, ScriptSettings.Cooldown)
                 Parent.RemovePoints(data.User, data.UserName, ScriptSettings.Costs)
