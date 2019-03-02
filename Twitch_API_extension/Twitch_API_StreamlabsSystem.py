@@ -5,6 +5,7 @@ import os
 import sys
 import json
 import codecs
+from math import floor
 from datetime import datetime
 sys.path.append(os.path.join(os.path.dirname(__file__), "lib")) #point at lib folder for classes / references
 
@@ -142,9 +143,10 @@ def getFollowerAge(data, streamer):
 
     years = (date.days - date.days % 365) / 365
     days = date.days - 365 * years
+    hours = floor(date.seconds/ 3600)
 
     if years > 0:
-        return data.UserName + " folgt " + streamer + " nun seit "  +str(years) + " Jahren und "+str(days) + " Tagen"
+        return data.UserName + " folgt " + streamer + " nun seit "  +str(years) + " Jahren, "+str(days) + " Tagen und " + str(int(hours)) + " Stunden"
     else:
-        return data.UserName + " folgt " + streamer + " nun seit " +str(days) + " Tagen"
+        return data.UserName + " folgt " + streamer + " nun seit " +str(days) + " Tagen und " + str(int(hours)) + " Stunden"
 
