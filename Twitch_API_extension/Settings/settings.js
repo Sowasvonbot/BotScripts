@@ -1,5 +1,5 @@
 ﻿var settings = {
-  "Command": "!test",
+  "Command": "!followerage",
   "Permission": "everyone",
   "Info": "",
   "Cooldown": 1.0,

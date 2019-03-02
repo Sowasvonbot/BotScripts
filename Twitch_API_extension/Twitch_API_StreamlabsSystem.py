@@ -5,6 +5,7 @@ import os
 import sys
 import json
 import codecs
+from datetime import datetime
 sys.path.append(os.path.join(os.path.dirname(__file__), "lib")) #point at lib folder for classes / references
 
 #   Import your Settings class
@@ -49,18 +50,10 @@ def Init():
 #---------------------------
 def Execute(data):
     if IsValidChatMessage(data):
-        header = {"Client-ID": CLIENT_ID, "Accept":"application/vnd.twitchtv.v5+json"}
-        response = json.loads(Parent.GetRequest("https://api.twitch.tv/kraken/users?login=sowasvonbaf_aka_tobi", header))
-        response = json.loads(response["response"])
-        USerID = response["users"][0]["_id"]
-
-        Follows = json.loads(Parent.GetRequest("https://api.twitch.tv/kraken/users/" + USerID + "/follows/channels", header))
-        Follows = json.loads(Follows["response"])
-        #Parent.SendStreamMessage(str(Follows))
-        with codecs.open(os.path.join(os.path.dirname(__file__), "result.json"), encoding="utf-8-sig", mode="w+") as f:
-            f.write(json.dumps(Follows, indent=3, ensure_ascii=False, encoding='utf-8'))
-
-        
+        if data.GetParam(1) != "":
+            Parent.SendStreamMessage(getFollowerAge(data, data.GetParam(1)))
+        else:
+            Parent.SendStreamMessage(getFollowerAge(data))
     return
 
     
@@ -108,3 +101,40 @@ def IsValidChatMessage(data):
         Parent.AddUserCooldown(ScriptName,ScriptSettings.Command,data.User,ScriptSettings.Cooldown)  # Put the command on cooldown
         return True
     return False
+
+
+# Get the follower age for given streamer
+def getFollowerAge(data, streamer="coonh"):
+    header = {"Client-ID": CLIENT_ID, "Accept":"application/vnd.twitchtv.v5+json"}
+    response = json.loads(Parent.GetRequest("https://api.twitch.tv/kraken/users?login="+ data.UserName, header))
+    response = json.loads(response["response"])
+    USerID = response["users"][0]["_id"]
+
+    try:
+        StreamerId = json.loads(Parent.GetRequest("https://api.twitch.tv/kraken/users?login="+ streamer, header))
+        StreamerId = json.loads(StreamerId["response"])
+        StreamerId = StreamerId["users"][0]["_id"]
+    except:
+        return "Der Streamer " + streamer + " existiert nicht"
+
+    Follows = json.loads(Parent.GetRequest("https://api.twitch.tv/kraken/users/" + USerID + "/follows/channels", header))
+    Follows = json.loads(Follows["response"])
+    #Parent.SendStreamMessage(str(Follows))
+    with codecs.open(os.path.join(os.path.dirname(__file__), "ImFollowing.json"), encoding="utf-8-sig", mode="w+") as f:
+        f.write(json.dumps(Follows, indent=3, ensure_ascii=False, encoding='utf-8'))
+
+
+    FollowData = json.loads(Parent.GetRequest("https://api.twitch.tv/kraken/users/" + USerID + "/follows/channels/" + StreamerId, header))
+    try:
+        status = FollowData["status"]
+        if status == 404:
+            return "@" + data.UserName + " Du bist kein Follower bei " + streamer
+    except:
+        return "Something went wrong searching for " + streamer
+
+    
+    FollowData = json.loads(FollowData["response"])
+    date = datetime.strptime(FollowData["created_at"], '%Y-%m-%dT%H:%M:%SZ')
+    date = datetime.today() - date
+    return data.UserName + " folgt " + streamer + " nun seit " +str(date.days) + " Tagen"
+

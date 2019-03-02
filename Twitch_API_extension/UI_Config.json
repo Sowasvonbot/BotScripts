@@ -31,12 +31,5 @@
       "label": "Cooldown (seconds)",
       "tooltip": "How long the command should go on cooldown for",
       "group": "Core"
-    },
-    "Response": {
-        "type": "textbox",
-        "value": "Pong!",
-        "label": "Response",
-        "tooltip": "The message that will be sent to chat when using the command.",
-        "group": "Core"
-      }
+    }
   }
