@@ -139,5 +139,12 @@ def getFollowerAge(data, streamer):
     FollowData = json.loads(FollowData["response"])
     date = datetime.strptime(FollowData["created_at"], '%Y-%m-%dT%H:%M:%SZ')
     date = datetime.today() - date
-    return data.UserName + " folgt " + streamer + " nun seit " +str(date.days) + " Tagen"
+
+    years = (date.days - date.days % 365) / 365
+    days = date.days - 365 * years
+
+    if years > 0:
+        return data.UserName + " folgt " + streamer + " nun seit "  +str(years) + " Jahren und "+str(days) + " Tagen"
+    else:
+        return data.UserName + " folgt " + streamer + " nun seit " +str(days) + " Tagen"
 
