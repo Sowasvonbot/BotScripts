@@ -18,8 +18,7 @@ Website = ""
 Description = "!roulette will start the roulette"
 Creator = "Coonh Club"
 Version = "1.0.0.0"
-delay = 5
-evaluationAvailable = True
+
 
 #---------------------------
 #   Define Global Variables
@@ -30,7 +29,10 @@ global ScriptSettings
 ScriptSettings = MySettings()
 global users
 users = []
-
+global delay 
+delay = 5
+global evaluationAvailable
+evaluationAvailable = True
 
 #---------------------------
 #   [Required] Initialize Data (Only called on load)
@@ -54,8 +56,6 @@ def Init():
 #   [Required] Execute Data / Process messages
 #---------------------------
 def Execute(data):
-    Parent.SendStreamMessage(str(int(time.strftime("%M"))%delay))
-    Parent.SendStreamMessage(str(evaluationAvailable))
     if IsValidChatCommitment(data):
         True
     return
