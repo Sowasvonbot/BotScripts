@@ -28,6 +28,8 @@ global SettingsFile
 SettingsFile = ""
 global ScriptSettings
 ScriptSettings = MySettings()
+global users
+users = []
 
 
 #---------------------------
@@ -111,9 +113,22 @@ def Unload():
 def ScriptToggled(state):
     return
 
+def rolling():
+    randomInt = Parent.GetRandom(0,36)
+    winnerString = ""
+    for user in users:
+        userData = user.split(",")
+        amount = evaluatePerUser(userData[2], userData[3], randomInt)
+        Parent.AddPoints(userData[0], userData[1], amount)
+        if amount > 0:
+            winnerString = winnerString + ", " + userData[1] + "(" + str(randomInt) + ")"
+    
+    output  = "Es wurde gedreht und die Kugel landete auf der " + str(randomInt) + ". Somit gewinnen dieses mal " + winnerString
+    Parent.SendStreamMessage(output)
+
 
 def evaluatePerUser(jetons, amount, winningNumber):
-    if winningNumber = 0:
+    if winningNumber == 0:
         residual = 2 
     else: 
         residual = winningNumber % 2
