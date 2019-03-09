@@ -48,7 +48,7 @@ def Init():
 #   [Required] Execute Data / Process messages
 #---------------------------
 def Execute(data):
-    Parent.SendStreamMessage()
+    Parent.SendStreamMessage(str(time.time()))
     if IsValidChatMessage(data):
         Parent.SendStreamMessage(ScriptSettings.Response)    # Send your message to chat
         
