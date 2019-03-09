@@ -11,10 +11,10 @@ from Settings_Module import MySettings
 #---------------------------
 #   [Required] Script Information
 #---------------------------
-ScriptName = "Template Script"
+ScriptName = "Roulette Script"
 Website = ""
-Description = "!ping will post a message in chat"
-Creator = "Sowasvonbot"
+Description = "!roulette will start the roulette"
+Creator = "Coonh Club"
 Version = "1.0.0.0"
 
 #---------------------------
