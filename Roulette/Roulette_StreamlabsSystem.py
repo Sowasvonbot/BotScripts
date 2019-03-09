@@ -9,6 +9,7 @@ sys.path.append(os.path.join(os.path.dirname(__file__), "lib")) #point at lib fo
 
 #   Import your Settings class
 from Settings_Module import MySettings
+from petitions import myPetitions
 #---------------------------
 #   [Required] Script Information
 #---------------------------
@@ -25,6 +26,7 @@ global SettingsFile
 SettingsFile = ""
 global ScriptSettings
 ScriptSettings = MySettings()
+
 
 #---------------------------
 #   [Required] Initialize Data (Only called on load)
@@ -90,7 +92,8 @@ def ScriptToggled(state):
 
 
 def evaluatePerUser(jetons, amount, winningNumber):
-    
+    Pet = myPetitions.instance()
+    return
 
 
 
