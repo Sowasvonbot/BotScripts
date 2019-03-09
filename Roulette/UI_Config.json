@@ -7,6 +7,13 @@
       "tooltip": "The command that will be responded to.",
       "group": "Core"
     },
+    "Command_short": {
+      "type": "textbox",
+      "value": "!rl",
+      "label": "Short Command",
+      "tooltip": "The short version from the command",
+      "group": "Core"
+    },
     "Permission": {
       "type": "dropdown",
       "value": "everyone",
