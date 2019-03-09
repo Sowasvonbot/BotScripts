@@ -73,9 +73,15 @@ def Tick():
 #   [Required]  Valid Commitment method (Valid string or colour or zero and the Commitment)
 #   
 #---------------------------
-def IsValidChatCommitment(jsonData):
-    #if data.IsChatMessage() and (data.GetParam(1).lower()
-    return
+
+def IsValidChatCommitment(data):
+    Pet = myPetitions.getInstance()
+    for i in Pet.allPetitions:
+        if data.GetParam(2) in Pet.allPetitions:
+            print ('Gefunden:', i)
+
+    return True
+
 #---------------------------
 #   [Optional] Parse method (Allows you to create your own custom $parameters) 
 #---------------------------
