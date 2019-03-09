@@ -50,16 +50,26 @@ def Execute(data):
     
     if IsValidChatMessage(data):
         Parent.SendStreamMessage(ScriptSettings.Response)    # Send your message to chat
+
+    if IsValidChatCommitment(data):
+        True
         
     return
 
-    
 #---------------------------
 #   [Required] Tick method (Gets called during every iteration even when there is no incoming data)
 #---------------------------
 def Tick():
     return
 
+
+#---------------------------
+#   [Required]  Valid Commitment method (Valid string or colour or zero and the Commitment)
+#   
+#---------------------------
+def IsValidChatCommitment(jsonData):
+    #if data.IsChatMessage() and (data.GetParam(1).lower()
+    return
 #---------------------------
 #   [Optional] Parse method (Allows you to create your own custom $parameters) 
 #---------------------------
@@ -89,18 +99,14 @@ def ScriptToggled(state):
 
 
 def IsValidChatMessage(data):
-    if data.IsChatMessage() and \ 
-        (data.GetParam(0).lower() == ScriptSettings.Command or data.GetParam(0).lower() == ScriptSettings.Command_short) \
-         and Parent.IsOnUserCooldown(ScriptName,ScriptSettings.Command,data.User):
+    if data.IsChatMessage() and (data.GetParam(0).lower() == ScriptSettings.Command or data.GetParam(0).lower() == ScriptSettings.Command_short) and Parent.IsOnUserCooldown(ScriptName,ScriptSettings.Command,data.User):
         
         
         Parent.SendStreamMessage("Time Remaining " + str(Parent.GetUserCooldownDuration(ScriptName,ScriptSettings.Command,data.User)))
         return False 
 
     #   Check if the propper command is used, the command is not on cooldown and the user has permission to use the command
-    if data.IsChatMessage() and \
-         (data.GetParam(0).lower() == ScriptSettings.Command or data.GetParam(0).lower() == ScriptSettings.Command_short) \
-         and not Parent.IsOnUserCooldown(ScriptName,ScriptSettings.Command,data.User) \ 
+    if data.IsChatMessage() and (data.GetParam(0).lower() == ScriptSettings.Command or data.GetParam(0).lower() == ScriptSettings.Command_short) and not Parent.IsOnUserCooldown(ScriptName,ScriptSettings.Command,data.User) \ 
              and Parent.HasPermission(data.User,ScriptSettings.Permission,ScriptSettings.Info):
         
         
