@@ -48,7 +48,7 @@ def Init():
 #   [Required] Execute Data / Process messages
 #---------------------------
 def Execute(data):
-    Parent.SendStreamMessage(str(time.time()))
+    Parent.SendStreamMessage(str(time.clock()))
     if IsValidChatMessage(data):
         Parent.SendStreamMessage(ScriptSettings.Response)    # Send your message to chat
         
@@ -90,7 +90,7 @@ def ScriptToggled(state):
 
 
 def evaluatePerUser(jetons, amount, winningNumber):
-    
+    return False
 
 
 
