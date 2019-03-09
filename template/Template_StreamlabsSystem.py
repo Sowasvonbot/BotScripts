@@ -98,3 +98,4 @@ def IsValidChatMessage(data):
         Parent.AddUserCooldown(ScriptName,ScriptSettings.Command,data.User,ScriptSettings.Cooldown)  # Put the command on cooldown
         return True
     return False
+# Laber ned
