@@ -75,16 +75,22 @@ def Tick():
 
 #---------------------------
 #   [Required]  Valid Commitment method (Valid string or colour or zero and the Commitment)
-#   
 #---------------------------
 
 def IsValidChatCommitment(data):
     Pet = myPetitions.getInstance()
     for i in Pet.allPetitions:
         if data.GetParam(2) in Pet.allPetitions:
-            print ('Gefunden:', i)
+            print ('Gefunden: ', i)
 
     return True
+
+#---------------------------
+#   [Required]  Get userID
+#---------------------------
+def userID():
+    [data.User, data.UserName, data.GetParam(3), data.GetParam(2)].join()
+    return 
 
 #---------------------------
 #   [Optional] Parse method (Allows you to create your own custom $parameters) 
