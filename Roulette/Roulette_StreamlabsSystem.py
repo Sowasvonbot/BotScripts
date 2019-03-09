@@ -4,6 +4,7 @@
 import os
 import sys
 import json
+import time
 sys.path.append(os.path.join(os.path.dirname(__file__), "lib")) #point at lib folder for classes / references
 
 #   Import your Settings class
@@ -47,7 +48,7 @@ def Init():
 #   [Required] Execute Data / Process messages
 #---------------------------
 def Execute(data):
-    
+    Parent.SendStreamMessage()
     if IsValidChatMessage(data):
         Parent.SendStreamMessage(ScriptSettings.Response)    # Send your message to chat
         
@@ -94,19 +95,14 @@ def evaluatePerUser(jetons, amount, winningNumber):
 
 
 def IsValidChatMessage(data):
-    if data.IsChatMessage() and \ 
-        (data.GetParam(0).lower() == ScriptSettings.Command or data.GetParam(0).lower() == ScriptSettings.Command_short) \
-         and Parent.IsOnUserCooldown(ScriptName,ScriptSettings.Command,data.User):
+    if data.IsChatMessage() and (data.GetParam(0).lower() == ScriptSettings.Command or data.GetParam(0).lower() == ScriptSettings.Command_short) and Parent.IsOnUserCooldown(ScriptName,ScriptSettings.Command,data.User):
         
         
         Parent.SendStreamMessage("Time Remaining " + str(Parent.GetUserCooldownDuration(ScriptName,ScriptSettings.Command,data.User)))
         return False 
 
     #   Check if the propper command is used, the command is not on cooldown and the user has permission to use the command
-    if data.IsChatMessage() and \
-         (data.GetParam(0).lower() == ScriptSettings.Command or data.GetParam(0).lower() == ScriptSettings.Command_short) \
-         and not Parent.IsOnUserCooldown(ScriptName,ScriptSettings.Command,data.User) \ 
-             and Parent.HasPermission(data.User,ScriptSettings.Permission,ScriptSettings.Info):
+    if data.IsChatMessage() and (data.GetParam(0).lower() == ScriptSettings.Command or data.GetParam(0).lower() == ScriptSettings.Command_short) and not Parent.IsOnUserCooldown(ScriptName,ScriptSettings.Command,data.User) and Parent.HasPermission(data.User,ScriptSettings.Permission,ScriptSettings.Info):
         
         
         Parent.AddUserCooldown(ScriptName,ScriptSettings.Command,data.User,ScriptSettings.Cooldown)  # Put the command on cooldown
