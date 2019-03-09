@@ -98,5 +98,9 @@ def IsValidChatMessage(data):
         Parent.AddUserCooldown(ScriptName,ScriptSettings.Command,data.User,ScriptSettings.Cooldown)  # Put the command on cooldown
         return True
     return False
+<<<<<<< HEAD
 
 #sam ist böse
+=======
+# Laber ned
+>>>>>>> 3db0f17553bb6e5c4e07b15d31f5a34ebdb35e22
