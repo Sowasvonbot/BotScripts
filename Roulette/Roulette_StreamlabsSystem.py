@@ -109,8 +109,18 @@ def ScriptToggled(state):
 
 
 def evaluatePerUser(jetons, amount, winningNumber):
-    Pet = myPetitions.instance()
-    return
+    if winningNumber = 0:
+        residual = 2 
+    else: 
+        residual = winningNumber % 2
+
+    if jetons == "red" and residual == 1:
+        return amount * 1
+    elif jetons == "black" and residual == 0:
+        return amount * 1
+    elif jetons == winningNumber:
+        return amount * 35
+    return (-1 * amount)
 
 
 def IsValidChatMessage(data):
