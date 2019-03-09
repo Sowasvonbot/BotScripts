@@ -69,7 +69,6 @@ def Tick():
 
 #---------------------------
 #   [Required]  Valid Commitment method (Valid string or colour or zero and the Commitment)
-#   
 #---------------------------
 
 def IsValidChatCommitment(data):
@@ -79,6 +78,13 @@ def IsValidChatCommitment(data):
             print ('Gefunden: ', i)
 
     return True
+
+#---------------------------
+#   [Required]  Get userID
+#---------------------------
+def userID():
+    [data.User, data.UserName, data.GetParam(3), data.GetParam(2)].join()
+    return 
 
 #---------------------------
 #   [Optional] Parse method (Allows you to create your own custom $parameters) 
