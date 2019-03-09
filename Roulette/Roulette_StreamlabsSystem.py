@@ -86,9 +86,9 @@ def IsValidChatCommitment(data):
 #---------------------------
 #   [Required]  Get userID
 #---------------------------
-def userID():
-    [data.User, data.UserName, data.GetParam(3), data.GetParam(2)].join()
-    return 
+#def userID():
+#    [data.User, data.UserName, data.GetParam(3), data.GetParam(2)].join()
+#    return 
 
 #---------------------------
 #   [Optional] Parse method (Allows you to create your own custom $parameters) 
