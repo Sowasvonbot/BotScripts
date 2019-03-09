@@ -9,6 +9,7 @@ sys.path.append(os.path.join(os.path.dirname(__file__), "lib")) #point at lib fo
 
 #   Import your Settings class
 from Settings_Module import MySettings
+from petitions import myPetitions
 #---------------------------
 #   [Required] Script Information
 #---------------------------
@@ -27,6 +28,7 @@ global SettingsFile
 SettingsFile = ""
 global ScriptSettings
 ScriptSettings = MySettings()
+
 
 #---------------------------
 #   [Required] Initialize Data (Only called on load)
@@ -52,11 +54,10 @@ def Init():
 def Execute(data):
     Parent.SendStreamMessage(str(int(time.strftime("%M"))%delay))
     Parent.SendStreamMessage(str(evaluationAvailable))
-    if IsValidChatMessage(data):
-        Parent.SendStreamMessage(ScriptSettings.Response)    # Send your message to chat    
+    if IsValidChatCommitment(data):
+        True
     return
 
-    
 #---------------------------
 #   [Required] Tick method (Gets called during every iteration even when there is no incoming data)
 #---------------------------
@@ -68,6 +69,20 @@ def Tick():
     if (int(time.strftime("%M"))%delay==1 and evaluationAvailable == False):
         evaluationAvailable = True
     return
+
+
+#---------------------------
+#   [Required]  Valid Commitment method (Valid string or colour or zero and the Commitment)
+#   
+#---------------------------
+
+def IsValidChatCommitment(data):
+    Pet = myPetitions.getInstance()
+    for i in Pet.allPetitions:
+        if data.GetParam(2) in Pet.allPetitions:
+            print ('Gefunden:', i)
+
+    return True
 
 #---------------------------
 #   [Optional] Parse method (Allows you to create your own custom $parameters) 
@@ -98,8 +113,18 @@ def ScriptToggled(state):
 
 
 def evaluatePerUser(jetons, amount, winningNumber):
-    return False
+    if winningNumber = 0:
+        residual = 2 
+    else: 
+        residual = winningNumber % 2
 
+    if jetons == "red" and residual == 1:
+        return amount * 1
+    elif jetons == "black" and residual == 0:
+        return amount * 1
+    elif jetons == winningNumber:
+        return amount * 35
+    return (-1 * amount)
 
 
 def IsValidChatMessage(data):
