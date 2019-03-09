@@ -100,3 +100,4 @@ def IsValidChatMessage(data):
     return False
 
 #Coonh stinkt
+# Laber ned
