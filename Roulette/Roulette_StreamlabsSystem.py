@@ -89,6 +89,11 @@ def ScriptToggled(state):
     return
 
 
+def evaluatePerUser(jetons, amount, winningNumber):
+    
+
+
+
 def IsValidChatMessage(data):
     if data.IsChatMessage() and (data.GetParam(0).lower() == ScriptSettings.Command or data.GetParam(0).lower() == ScriptSettings.Command_short) and Parent.IsOnUserCooldown(ScriptName,ScriptSettings.Command,data.User):
         
