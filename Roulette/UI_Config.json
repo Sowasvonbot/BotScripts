@@ -2,7 +2,7 @@
     "output_file": "Settings/settings.json",
     "Command": {
       "type": "textbox",
-      "value": "!ping",
+      "value": "!roulette",
       "label": "Command",
       "tooltip": "The command that will be responded to.",
       "group": "Core"
@@ -34,7 +34,7 @@
     },
     "Response": {
         "type": "textbox",
-        "value": "Pong!",
+        "value": "Roulette startet",
         "label": "Response",
         "tooltip": "The message that will be sent to chat when using the command.",
         "group": "Core"
