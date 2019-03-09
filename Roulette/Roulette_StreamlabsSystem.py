@@ -57,7 +57,7 @@ def Init():
 #---------------------------
 def Execute(data):
     if IsValidChatCommitment(data):
-        True
+        Parent.SendStreamMessage("Hier kommt mal Roulette")
     return
 
 #---------------------------
