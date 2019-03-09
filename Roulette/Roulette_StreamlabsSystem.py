@@ -55,7 +55,7 @@ def Init():
 #---------------------------
 def Execute(data):
     if IsValidChatCommitment(data):
-        Parent.SendStreamMessage("Hier kommt mal Roulette")
+        True
     return
 
 #---------------------------
@@ -65,6 +65,7 @@ def Tick():
     global evaluationAvailable
     if int(time.strftime("%M"))%ScriptSettings.Delay==0  and evaluationAvailable == True:
         Parent.SendStreamMessage("Es sind wieder 5 min rum also wird jetzt die Auswertung aufgerufen GEWINNE GEWINNE GEWINNE !!!!")
+        rolling()
         evaluationAvailable = False
     if (int(time.strftime("%M"))%ScriptSettings.Delay==1 and evaluationAvailable == False):
         evaluationAvailable = True

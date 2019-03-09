@@ -14,6 +14,7 @@ class MySettings(object):
 			self.Permission = "everyone"
 			self.Info = ""
 			self.Command_short = "!rl"
+			self.Delay = 5.0
 
 	def Reload(self, jsondata):
 		self.__dict__ = json.loads(jsondata, encoding="utf-8")
