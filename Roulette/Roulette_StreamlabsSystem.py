@@ -53,16 +53,38 @@ def Execute(data):
     Parent.SendStreamMessage(str(time.clock()))
     if IsValidChatMessage(data):
         Parent.SendStreamMessage(ScriptSettings.Response)    # Send your message to chat
+
+    # placeholder ---
+    if IsValidChatCommitment(data):
+        True
         
     return
 
-    
 #---------------------------
 #   [Required] Tick method (Gets called during every iteration even when there is no incoming data)
 #---------------------------
 def Tick():
     return
 
+
+#---------------------------
+#   [Required]  Valid Commitment method (Valid string or colour or zero and the Commitment)
+#   
+#---------------------------
+def IsValidChatCommitment(jsonData):
+    #if data.IsChatMessage() and (data.GetParam(1).lower()
+
+     for i in liste:
+        if "Tag" in i:
+            print 'Gefunden:', i
+
+    def ValidChatCommitment():
+    for i in range(len(liste)):
+        if "Tag" in liste[i]:
+            print '"Tag" gefunden in item %s' % i
+    ValidChatCommitment()
+
+    return
 #---------------------------
 #   [Optional] Parse method (Allows you to create your own custom $parameters) 
 #---------------------------
@@ -94,7 +116,6 @@ def ScriptToggled(state):
 def evaluatePerUser(jetons, amount, winningNumber):
     Pet = myPetitions.instance()
     return
-
 
 
 def IsValidChatMessage(data):
