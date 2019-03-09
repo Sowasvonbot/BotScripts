@@ -76,7 +76,7 @@ def IsValidChatCommitment(data):
     Pet = myPetitions.getInstance()
     for i in Pet.allPetitions:
         if data.GetParam(2) in Pet.allPetitions:
-            print ('Gefunden:', i)
+            print ('Gefunden: ', i)
 
     return True
 
