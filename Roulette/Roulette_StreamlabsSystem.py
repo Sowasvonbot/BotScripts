@@ -73,17 +73,6 @@ def Tick():
 #---------------------------
 def IsValidChatCommitment(jsonData):
     #if data.IsChatMessage() and (data.GetParam(1).lower()
-
-     for i in liste:
-        if "Tag" in i:
-            print 'Gefunden:', i
-
-    def ValidChatCommitment():
-    for i in range(len(liste)):
-        if "Tag" in liste[i]:
-            print '"Tag" gefunden in item %s' % i
-    ValidChatCommitment()
-
     return
 #---------------------------
 #   [Optional] Parse method (Allows you to create your own custom $parameters) 
