@@ -29,8 +29,6 @@ global ScriptSettings
 ScriptSettings = MySettings()
 global users
 users = []
-global delay 
-delay = 5
 global evaluationAvailable
 evaluationAvailable = True
 
@@ -65,10 +63,10 @@ def Execute(data):
 #---------------------------
 def Tick():
     global evaluationAvailable
-    if int(time.strftime("%M"))%delay==0  and evaluationAvailable == True:
+    if int(time.strftime("%M"))%ScriptSettings.Delay==0  and evaluationAvailable == True:
         Parent.SendStreamMessage("Es sind wieder 5 min rum also wird jetzt die Auswertung aufgerufen GEWINNE GEWINNE GEWINNE !!!!")
         evaluationAvailable = False
-    if (int(time.strftime("%M"))%delay==1 and evaluationAvailable == False):
+    if (int(time.strftime("%M"))%ScriptSettings.Delay==1 and evaluationAvailable == False):
         evaluationAvailable = True
     return
 

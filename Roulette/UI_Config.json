@@ -28,7 +28,17 @@
         "label": "Info",
         "tooltip": "This field should only be filled when using the user_specific permission.",
         "group": "Core"
-      },
+    },
+    "Delay": {
+      "type": "slider",
+      "value": 5,
+      "min": 1,
+      "max": 120,
+      "ticks": 1,
+      "label": "Delay between to games",
+      "tooltip": "How long the Game is on Cooldown",
+      "group": "Core"
+    },
     "Cooldown": {
       "type": "slider",
       "value": 4,
@@ -46,4 +56,5 @@
         "tooltip": "The message that will be sent to chat when using the command.",
         "group": "Core"
       }
+    
   }
