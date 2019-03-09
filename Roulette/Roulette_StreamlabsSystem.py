@@ -17,6 +17,8 @@ Website = ""
 Description = "!roulette will start the roulette"
 Creator = "Coonh Club"
 Version = "1.0.0.0"
+delay = 5
+evaluationAvailable = True
 
 #---------------------------
 #   Define Global Variables
@@ -48,10 +50,10 @@ def Init():
 #   [Required] Execute Data / Process messages
 #---------------------------
 def Execute(data):
-    Parent.SendStreamMessage(str(time.clock()))
+    Parent.SendStreamMessage(str(int(time.strftime("%M"))%delay))
+    Parent.SendStreamMessage(str(evaluationAvailable))
     if IsValidChatMessage(data):
-        Parent.SendStreamMessage(ScriptSettings.Response)    # Send your message to chat
-        
+        Parent.SendStreamMessage(ScriptSettings.Response)    # Send your message to chat    
     return
 
     
@@ -59,6 +61,12 @@ def Execute(data):
 #   [Required] Tick method (Gets called during every iteration even when there is no incoming data)
 #---------------------------
 def Tick():
+    global evaluationAvailable
+    if int(time.strftime("%M"))%delay==0  and evaluationAvailable == True:
+        Parent.SendStreamMessage("Es sind wieder 5 min rum also wird jetzt die Auswertung aufgerufen GEWINNE GEWINNE GEWINNE !!!!")
+        evaluationAvailable = False
+    if (int(time.strftime("%M"))%delay==1 and evaluationAvailable == False):
+        evaluationAvailable = True
     return
 
 #---------------------------
