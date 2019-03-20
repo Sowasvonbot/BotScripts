@@ -28,5 +28,5 @@ class MySettings(object):
 			with codecs.open(settingsfile.replace("json", "js"), encoding="utf-8-sig", mode="w+") as f:
 				f.write("var settings = {0};".format(json.dumps(self.__dict__, encoding='utf-8')))
 		except:
-			Parent.Log(ScriptName, "Failed to save settings to file.")
+			return
 		return
