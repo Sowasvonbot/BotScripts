@@ -66,8 +66,6 @@ def Tick():
 #---------------------------
 #   [Optional] Parse method (Allows you to create your own custom $parameters) 
 #---------------------------
-def Parse(parseString, userid, username, targetid, targetname, message):
-    return
 
 #---------------------------
 #   [Optional] Reload Settings (Called when a user clicks the Save Settings button in the Chatbot UI)
