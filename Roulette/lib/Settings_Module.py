@@ -1,6 +1,4 @@
-# coding=utf-8-sig
-
-import os, sys
+import os
 import codecs
 import json
 
@@ -10,12 +8,13 @@ class MySettings(object):
 			with codecs.open(settingsfile, encoding="utf-8-sig", mode="r") as f:
 				self.__dict__ = json.load(f, encoding="utf-8")
 		except:
-			self.Command = "!elo"
-			self.Cooldown = 3
+			self.Command = "!roulette"
+			self.Response = "error while loading settings"
+			self.Cooldown = 10
 			self.Permission = "everyone"
-			self.Info = "Dieses Skript implementiert einen elo Command"
-			self.Costs = 0
-			self.ApiKey = "nothing"
+			self.Info = ""
+			self.Command_short = "!rl"
+			self.Delay = 5.0
 
 	def Reload(self, jsondata):
 		self.__dict__ = json.loads(jsondata, encoding="utf-8")
@@ -28,5 +27,5 @@ class MySettings(object):
 			with codecs.open(settingsfile.replace("json", "js"), encoding="utf-8-sig", mode="w+") as f:
 				f.write("var settings = {0};".format(json.dumps(self.__dict__, encoding='utf-8')))
 		except:
-			return	
+			return
 		return

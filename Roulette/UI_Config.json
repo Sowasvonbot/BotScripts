@@ -2,9 +2,16 @@
     "output_file": "Settings/settings.json",
     "Command": {
       "type": "textbox",
-      "value": "!test",
+      "value": "!roulette",
       "label": "Command",
       "tooltip": "The command that will be responded to.",
+      "group": "Core"
+    },
+    "Command_short": {
+      "type": "textbox",
+      "value": "!rl",
+      "label": "Short Command",
+      "tooltip": "The short version from the command",
       "group": "Core"
     },
     "Permission": {
@@ -21,10 +28,20 @@
         "label": "Info",
         "tooltip": "This field should only be filled when using the user_specific permission.",
         "group": "Core"
-      },
+    },
+    "Delay": {
+      "type": "slider",
+      "value": 5,
+      "min": 1,
+      "max": 120,
+      "ticks": 1,
+      "label": "Delay between to games",
+      "tooltip": "How long the Game is on Cooldown",
+      "group": "Core"
+    },
     "Cooldown": {
       "type": "slider",
-      "value": 1,
+      "value": 4,
       "min": 1,
       "max": 100,
       "ticks": 1,
@@ -32,11 +49,12 @@
       "tooltip": "How long the command should go on cooldown for",
       "group": "Core"
     },
-    "clientID": {
-      "type": "textbox",
-      "value" : "Your client ID",
-      "label" : "Client ID",
-      "tooltip" : "Insert your client ID",
-      "group": "Hidden"
-    }
+    "Response": {
+        "type": "textbox",
+        "value": "Roulette startet",
+        "label": "Response",
+        "tooltip": "The message that will be sent to chat when using the command.",
+        "group": "Core"
+      }
+    
   }
