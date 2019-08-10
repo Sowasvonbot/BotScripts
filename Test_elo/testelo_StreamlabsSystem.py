@@ -18,7 +18,7 @@ global getSummonerId
 getSummonerId = '/lol/summoner/v4/summoners/by-name/'
 
 global rankedId 
-rankedId = '/lol/league/v4/positions/by-summoner/'
+rankedId = '/lol/league/v4/entries/by-summoner/'
 
 global urlRiot
 urlRiot = 'https://euw1.api.riotgames.com'
