@@ -35,7 +35,8 @@ dictRank = {
 		"DIAMOND" : "Diamant",
 		"MASTER" : "Master",
 		"GRANDMASTER" : "Grandmaster",
-		"CHALLENGER" : "Challenger"
+		"CHALLENGER" : "Challenger",
+		"IRON": "Unterste Schublade"
 		}
 
 global SettingsFile
